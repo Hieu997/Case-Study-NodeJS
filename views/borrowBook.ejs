@@ -1,0 +1,58 @@
+<div class="page-heading">
+  <h1>Register to Borrow Books </h1>
+</div>
+
+<form action="/borrowbook/borrowBook" method="POST" enctype="multipart/form-data">
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>StudentCard</label>
+      <input type="number" class="form-control" id="studentcard" name="studentcard" placeholder="...">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Your Name</label>
+      <input type="text" class="form-control" id="yourname" name="yourname", placeholder="...">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Book ID</label>
+      <select class="selectpicker" data-style="btn-info" name="bookid">
+        <optgroup label="Select Table">
+            <option value="">Select Books</option>
+            <% books.forEach(function(books){ %>
+            <option value="<%= books.bookname %>"> <%= books.bookname %></option>
+            <% }) %>
+        </optgroup>
+    </select>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Quantity</label>
+      <input type="number" class="form-control" id="quantity" name="quantity", required>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Borrowed Date</label>
+      <input type="date" class="form-control" id="borroweddate" name="borroweddate", placeholder="...">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Return Date</label>
+      <input type="date" class="form-control" id="returndate" name="returndate", placeholder="...">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    function createbook() {
+      window.open("http://localhost:3000/book/createbook")
+    }
+    function borrowbook() {
+      window.open("http://localhost:3000/borrowbook/listborrowbook")
+    }
+
+    const deletebook = async (id) => {
+      await $.ajax({
+        url: "http://localhost:3000/book/delete",
+        type: "POST",
+        data: JSON.stringify({ "id": id }),
+        dataType: "json",
+        contentType:"application/json",
+        success: function (result) {
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          console.log(xhr.status);
+          console.log(thrownError);
+        }
+      });
+      location.reload();
+    };
+  </script>
+</head>
+
+<body>
+
+  <div class="page-heading">
+    <h1>Books</h1>
+    <button onclick="createbook()">Create Books</button>
+    <button onclick="borrowbook()">Borrow Books</button>
+  </div>
+
+   <form action="/book" method="POST" enctype="multipart/form-data">
+    <% for (const book of listbook) { %>
+      <p>Book Name: <%= book.bookname %>
+      </p>
+
+      <p>Library Name: <%= book.libraryname %>
+      </p>
+
+      <p>Category: <%= book.category %>
+      </p>
+
+      <p>Quantity: <%= book.quantity %>
+      </p>
+
+      <button onclick="deletebook('<%= book.id %>')">Delete</button>
+      <hr>
+      <% } %>
+  </form>
+</body>
+
+</html>

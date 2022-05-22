@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function listbook() {
+      window.open("http://localhost:3000/book")
+    }
+  </script>
+</head>
+<body>
+
+<div class="page-heading">
+  <h1>Create Books</h1>
+  <button onclick="listbook()">List Books</button>
+</div>
+
+<form action="/book/createbook" method="POST" enctype="multipart/form-data">
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Book Name</label>
+      <input type="text" class="form-control" id="bookname" name="bookname" placeholder="...">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Library Name</label>
+      <select class="selectpicker" data-style="btn-info" name="libraryname">
+        <optgroup label="Select Table">
+            <option value="">Select Libraris</option>
+            <% libraris.forEach(function(libraris){ %>
+            <option value="<%= libraris.libraryname %>"> <%= libraris.libraryname %></option>
+            <% }) %>
+        </optgroup>
+    </select>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Category</label>
+      <input type="text" class="form-control" id="category" name="category", placeholder="...">
+    </div>
+  </div>
+
+
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label>Quantity</label>
+      <input type="number" class="form-control" id="quantity" name="quantity">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
+</body>
+</html>

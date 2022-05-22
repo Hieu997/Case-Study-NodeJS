@@ -1,0 +1,18 @@
+<h1>List Borrow Books </h1>
+<form action="/borrowbook/listborrowbook" method="POST" enctype="multipart/form-data">
+  <% for (const borrows of borrowbooks) { %>
+    <p>StudentCard: <%= borrows.studentcard %>
+    </p>
+    <p>Your Name: <%= borrows.yourname %>
+    </p>
+    <p>Book ID: <%= borrows.bookid %>
+    </p>
+    <p>Quantity: <%= borrows.quantity %>
+    </p>
+    <p>Borrowed Date: <%= borrows.borroweddate %>
+    </p>
+    <p>Return Date: <%= borrows.returndate %>
+    </p>
+    <hr>
+    <% } %>
+</form>
